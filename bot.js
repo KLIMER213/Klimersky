@@ -1,15 +1,19 @@
-  const Discord = require('discord.js');
-  const client = new Discord.Client();
+/*
+ * Discord Bot Builder Bot
+ * Version 1.2.0
+ * Robert Borghese
+ */
 
-  client.on('ready', () => {
-      console.log('I am ready!');
-  });
+const Files = require(require('path').join(__dirname, 'js', 'Main.js')).Files;
 
-  client.on('message', message => {
-      if (message.content === 'ping') {
-        message.reply('fuck');
-      }
-  });
+if(!process.send) {
 
-  // THIS MUST BE THIS WAY
-  client.login(process.env.NTUyMjEzNzUyNDE0NDcwMTU0.D18Sug.GUv0x4PNxRIGvNK5guwHDkiZOo4);
+Files.initStandalone();
+
+} else {
+
+process.on('message', function(content) {
+	Files.initBotTest(content);
+});
+
+}
